@@ -1,0 +1,938 @@
+/* --- Global Styles & Variables (Mark 47 Theme - Original Colors) --- */
+:root {
+    /* --- Core Colors --- */
+    --color-dark-primary: #121212; /* Very dark almost black */
+    --color-dark-secondary: #1a1a1a; /* Slightly lighter dark for backgrounds */
+    --color-metallic-accent: #4a4a4a; /* Dark metallic gray for borders/lines */
+
+    --color-arc-reactor-blue: #00e6ff; /* Original bright blue */
+    --color-repulsor-orange: #4CAF50; /* Changed from orange to a vibrant green */
+    --color-danger: #AA0000; /* Darker red for errors */
+
+    /* --- Text Colors --- */
+    --color-text-light: #F0F0F0; /* Brighter white for main text */
+    --color-text-muted: #B0B0B0; /* Slightly lighter gray for secondary text */
+
+    /* --- Spacing & Sizing --- */
+    --spacing-unit: 1rem; /* Base unit for padding, margins */
+    --border-radius-sharp: 4px; /* Slightly rounded corners */
+    --border-radius-pill: 50px; /* For pill-shaped elements */
+}
+
+/* --- General Body & Typography --- */
+body {
+    font-family: 'Montserrat', sans-serif;
+    margin: 0;
+    padding: 0;
+    background-color: var(--color-dark-primary);
+    color: var(--color-text-light);
+    line-height: 1.6;
+    overflow-x: hidden; /* Prevent horizontal scroll */
+}
+
+.container {
+    width: 90%;
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 var(--spacing-unit);
+}
+
+h1, h2, h3, h4, h5, h6 {
+    font-family: 'Orbitron', sans-serif;
+    color: var(--color-arc-reactor-blue);
+    margin-bottom: var(--spacing-unit);
+}
+
+h2 { font-size: 2.5rem; }
+h3 { font-size: 2rem; }
+h4 { font-size: 1.5rem; }
+
+p {
+    margin-bottom: var(--spacing-unit);
+}
+
+a {
+    color: var(--color-arc-reactor-blue);
+    text-decoration: none;
+    transition: color 0.3s ease;
+}
+
+a:hover {
+    color: var(--color-repulsor-orange);
+}
+
+/* --- Buttons --- */
+.btn {
+    display: inline-block;
+    padding: 0.8rem 1.8rem;
+    border-radius: var(--border-radius-sharp);
+    font-weight: bold;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    transition: background-color 0.3s ease, color 0.3s ease, box-shadow 0.3s ease;
+    margin-right: var(--spacing-unit);
+    text-align: center;
+    white-space: nowrap; /* Prevent button text from wrapping */
+}
+
+.btn.primary-btn {
+    background-color: var(--color-repulsor-orange);
+    color: var(--color-dark-primary);
+    border: 1px solid var(--color-repulsor-orange);
+}
+
+.btn.primary-btn:hover {
+    background-color: var(--color-dark-secondary);
+    color: var(--color-repulsor-orange);
+    box-shadow: 0 0 15px rgba(76, 175, 80, 0.4); /* Green glow */
+}
+
+.btn.secondary-btn {
+    background-color: transparent;
+    color: var(--color-arc-reactor-blue);
+    border: 1px solid var(--color-arc-reactor-blue);
+}
+
+.btn.secondary-btn:hover {
+    background-color: var(--color-arc-reactor-blue);
+    color: var(--color-dark-primary);
+    box-shadow: 0 0 15px rgba(0, 230, 255, 0.4); /* Original blue glow */
+}
+
+.btn.tertiary-btn {
+    background-color: var(--color-dark-secondary);
+    color: var(--color-text-light);
+    border: 1px solid var(--color-metallic-accent);
+}
+
+.btn.tertiary-btn:hover {
+    background-color: var(--color-metallic-accent);
+    color: var(--color-text-light);
+    box-shadow: 0 0 10px rgba(74, 74, 74, 0.5);
+}
+
+/* --- Navbar --- */
+.navbar {
+    background-color: var(--color-dark-secondary);
+    padding: var(--spacing-unit) 0;
+    border-bottom: 1px solid var(--color-metallic-accent);
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.5);
+    position: sticky;
+    top: 0;
+    z-index: 1000; /* Ensure navbar stays on top */
+}
+
+.navbar .container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.navbar .logo {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.navbar .logo img {
+    height: 40px; /* Adjust logo size */
+    width: auto;
+}
+
+.navbar .logo h1 {
+    color: var(--color-text-light);
+    font-size: 1.8rem;
+    margin: 0;
+    letter-spacing: 0.5px;
+}
+
+.navbar nav ul {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    gap: calc(var(--spacing-unit) * 1.5);
+}
+
+.navbar nav ul li a {
+    color: var(--color-text-light);
+    font-weight: bold;
+    padding: 0.5rem 0;
+    position: relative;
+}
+
+.navbar nav ul li a::after {
+    content: '';
+    position: absolute;
+    width: 0;
+    height: 2px;
+    bottom: -5px;
+    left: 0;
+    background-color: var(--color-arc-reactor-blue);
+    transition: width 0.3s ease;
+}
+
+.navbar nav ul li a:hover::after,
+.navbar nav ul li a.active::after {
+    width: 100%;
+}
+
+.navbar nav ul li a.active {
+    color: var(--color-arc-reactor-blue);
+}
+
+
+/* --- Hero Sections --- */
+.hero-section {
+    position: relative;
+    color: var(--color-text-light);
+    text-align: center;
+    padding: 100px 0; /* Default padding for large hero */
+    height: 60vh; /* Make hero section fill viewport height */
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    overflow: hidden;
+    background: url('../img/hero-bg.jpg') no-repeat center center/cover; /* Default background */
+    box-shadow: inset 0 -5px 15px rgba(0, 0, 0, 0.7);
+}
+
+.hero-overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.9));
+    z-index: 1;
+    overflow: hidden; /* Ensure animation doesn't spill out */
+}
+
+.hero-animation-layer {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: radial-gradient(circle at center, rgba(0, 230, 255, 0.1) 0%, transparent 70%); /* Subtle blue glow */
+    animation: pulseGlow 4s infinite alternate; /* Apply animation */
+    z-index: -1; /* Place behind the gradient overlay so it shows through subtly */
+}
+
+@keyframes pulseGlow {
+    0% { transform: scale(1); opacity: 0.8; }
+    100% { transform: scale(1.1); opacity: 0.6; }
+}
+
+.hero-content {
+    position: relative;
+    z-index: 2;
+    max-width: 800px;
+}
+
+.hero-content h2 {
+    font-size: 3.5rem;
+    color: var(--color-arc-reactor-blue);
+    margin-bottom: var(--spacing-unit);
+    text-shadow: 0 0 10px rgba(0, 230, 255, 0.3);
+}
+
+.hero-content p {
+    font-size: 1.2rem;
+    color: var(--color-text-muted);
+    margin-bottom: calc(var(--spacing-unit) * 2);
+}
+
+/* Small Hero for inner pages */
+.hero-section.small-hero {
+    height: 30vh; /* Shorter height for inner page heroes */
+    padding: 60px 0;
+}
+
+.hero-section.small-hero .hero-content h2 {
+    font-size: 2.8rem;
+}
+
+.hero-section.small-hero .hero-content p {
+    font-size: 1rem;
+}
+
+
+/* --- Sections --- */
+.section-padded {
+    padding: calc(var(--spacing-unit) * 4) 0;
+}
+
+.section-padded h3 {
+    text-align: center;
+    margin-bottom: calc(var(--spacing-unit) * 3);
+    color: var(--color-repulsor-orange);
+    text-shadow: 0 0 8px rgba(76, 175, 80, 0.2); /* Green shadow */
+}
+
+.bg-dark-secondary {
+    background-color: var(--color-dark-secondary);
+}
+
+/* --- Homepage Specific Styles --- */
+.hero-buttons {
+    display: flex;
+    justify-content: center;
+    gap: var(--spacing-unit);
+}
+
+.info-cards {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: calc(var(--spacing-unit) * 2);
+    margin-top: calc(var(--spacing-unit) * 2);
+}
+
+.info-card {
+    background-color: var(--color-dark-secondary);
+    border: 1px solid var(--color-metallic-accent);
+    border-radius: var(--border-radius-sharp);
+    padding: calc(var(--spacing-unit) * 1.5);
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
+    text-align: center;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.info-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 5px 20px rgba(0, 230, 255, 0.2);
+}
+
+.info-card i {
+    font-size: 3rem;
+    color: var(--color-repulsor-orange);
+    margin-bottom: var(--spacing-unit);
+    filter: drop-shadow(0 0 5px rgba(76, 175, 80, 0.5)); /* Green drop shadow */
+}
+
+.info-card h4 {
+    color: var(--color-arc-reactor-blue);
+    margin-bottom: 0.5rem;
+}
+
+.info-card p {
+    color: var(--color-text-muted);
+    margin-bottom: 0; /* Remove default paragraph margin */
+}
+
+.latest-announcements-preview {
+    margin-top: calc(var(--spacing-unit) * 2);
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: calc(var(--spacing-unit) * 2);
+}
+
+.announcement-preview-item {
+    background-color: var(--color-dark-secondary);
+    border: 1px solid var(--color-metallic-accent);
+    border-radius: var(--border-radius-sharp);
+    padding: calc(var(--spacing-unit) * 1.5);
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.announcement-preview-item:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 5px 20px rgba(0, 230, 255, 0.2);
+}
+
+.announcement-preview-item .date {
+    display: block;
+    font-size: 0.8rem;
+    color: var(--color-text-muted);
+    margin-bottom: 0.5rem;
+}
+
+.announcement-preview-item h5 {
+    color: var(--color-arc-reactor-blue);
+    margin-bottom: 0.5rem;
+    font-size: 1.2rem;
+}
+
+.announcement-preview-item p {
+    font-size: 0.9rem;
+    color: var(--color-text-light);
+    margin-bottom: var(--spacing-unit);
+}
+
+/* --- Services Page Specific Styles --- */
+.service-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: calc(var(--spacing-unit) * 2);
+    margin-top: calc(var(--spacing-unit) * 2);
+}
+
+.service-card {
+    background-color: var(--color-dark-secondary);
+    border: 1px solid var(--color-metallic-accent);
+    border-radius: var(--border-radius-sharp);
+    padding: calc(var(--spacing-unit) * 1.5);
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
+    text-align: center;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+
+.service-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 5px 20px rgba(0, 230, 255, 0.2);
+}
+
+.service-card h4 {
+    color: var(--color-arc-reactor-blue);
+    margin-bottom: 0.75rem;
+}
+
+.service-card p {
+    color: var(--color-text-muted);
+    font-size: 0.95rem;
+    flex-grow: 1; /* Ensures buttons align at bottom */
+    margin-bottom: calc(var(--spacing-unit) * 1.5);
+}
+
+/* --- Team Page Specific Styles --- */
+.team-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); /* Responsive grid */
+    gap: calc(var(--spacing-unit) * 2);
+    margin-top: calc(var(--spacing-unit) * 2);
+}
+
+.team-member {
+    background-color: var(--color-dark-secondary);
+    border: 1px solid var(--color-metallic-accent);
+    border-radius: var(--border-radius-sharp);
+    padding: calc(var(--spacing-unit) * 1.5);
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
+    text-align: center;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.team-member:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 5px 20px rgba(0, 230, 255, 0.2);
+}
+
+.team-member img {
+    width: 150px; /* Adjust as needed */
+    height: 150px; /* Adjust as needed */
+    border-radius: 50%; /* Circular images */
+    object-fit: cover; /* Ensure images fill the circle */
+    margin-bottom: var(--spacing-unit);
+}
+
+.team-member h4 {
+    color: var(--color-arc-reactor-blue);
+    margin-bottom: 0.5rem;
+}
+
+.team-member .designation {
+    color: var(--color-text-muted);
+    font-size: 0.9rem;
+    margin-bottom: var(--spacing-unit);
+}
+
+.team-member .contact-links {
+    display: flex;
+    justify-content: center;
+    gap: var(--spacing-unit);
+}
+
+.team-member .contact-links a {
+    color: var(--color-metallic-accent);
+    font-size: 1.5rem; /* Adjust icon size */
+    transition: color 0.3s ease;
+}
+
+.team-member .contact-links a:hover {
+    color: var(--color-repulsor-orange);
+}
+
+
+/* --- Announcements Page Specific Styles --- */
+.announcement-list {
+    margin-top: calc(var(--spacing-unit) * 2);
+}
+
+.announcement-item {
+    background-color: var(--color-dark-secondary);
+    border: 1px solid var(--color-metallic-accent);
+    border-radius: var(--border-radius-sharp);
+    padding: calc(var(--spacing-unit) * 1.5);
+    margin-bottom: calc(var(--spacing-unit) * 2); /* Space between announcements */
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.announcement-item:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 5px 20px rgba(0, 230, 255, 0.2);
+}
+
+.announcement-item .announcement-date {
+    display: block;
+    font-size: 0.85rem;
+    color: var(--color-text-muted);
+    margin-bottom: 0.5rem;
+}
+
+.announcement-item h5 {
+    color: var(--color-arc-reactor-blue);
+    margin-bottom: 0.5rem;
+    font-size: 1.2rem;
+}
+
+.announcement-item p {
+    font-size: 0.9rem;
+    color: var(--color-text-light);
+    margin-bottom: var(--spacing-unit);
+}
+
+.announcement-item .read-more {
+    display: inline-block;
+    color: var(--color-arc-reactor-blue);
+    font-weight: bold;
+    font-size: 0.9rem;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    transition: color 0.3s ease;
+}
+
+.announcement-item .read-more:hover {
+    color: var(--color-repulsor-orange);
+}
+
+/* --- Get Assistance Page Specific Styles --- */
+.contact-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); /* Responsive grid for contact methods */
+    gap: calc(var(--spacing-unit) * 2);
+    margin-top: calc(var(--spacing-unit) * 2);
+    text-align: center;
+}
+
+.contact-card {
+    background-color: var(--color-dark-secondary);
+    border: 1px solid var(--color-metallic-accent);
+    border-radius: var(--border-radius-sharp);
+    padding: calc(var(--spacing-unit) * 2);
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.contact-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 5px 20px rgba(0, 230, 255, 0.2);
+}
+
+.contact-card .icon-large {
+    font-size: 3rem;
+    color: var(--color-arc-reactor-blue);
+    margin-bottom: var(--spacing-unit);
+    filter: drop-shadow(0 0 5px rgba(0, 230, 255, 0.5));
+}
+
+.contact-card h4 {
+    color: var(--color-repulsor-orange);
+    margin-bottom: 0.75rem;
+}
+
+.contact-card p {
+    color: var(--color-text-muted);
+    font-size: 0.95rem;
+    flex-grow: 1; /* Allow content to push button down */
+    margin-bottom: calc(var(--spacing-unit) * 1.5);
+}
+
+.contact-card .btn {
+    width: auto; /* Allow button to size naturally */
+    min-width: 150px;
+    margin-right: 0; /* Override general btn margin */
+}
+
+/* --- Footer --- */
+footer {
+    background-color: var(--color-dark-secondary);
+    color: var(--color-text-muted);
+    text-align: center;
+    padding: calc(var(--spacing-unit) * 1.5) 0;
+    border-top: 1px solid var(--color-metallic-accent);
+    margin-top: calc(var(--spacing-unit) * 4);
+    font-size: 0.9rem;
+}
+
+/* --- Responsive Adjustments --- */
+@media (max-width: 768px) {
+    .navbar .container {
+        flex-direction: column;
+        text-align: center;
+    }
+
+    .navbar .logo {
+        margin-bottom: var(--spacing-unit);
+    }
+
+    .navbar nav ul {
+        flex-direction: column;
+        gap: calc(var(--spacing-unit) / 2);
+    }
+
+    .hero-content h2 {
+        font-size: 2.5rem;
+    }
+
+    .hero-content p {
+        font-size: 1rem;
+    }
+
+    .hero-section.small-hero .hero-content h2 {
+        font-size: 2rem;
+    }
+
+    .hero-section.small-hero .hero-content p {
+        font-size: 0.9rem;
+    }
+
+    .btn {
+        width: 100%; /* Full width buttons on small screens */
+        margin-right: 0;
+        margin-bottom: var(--spacing-unit);
+    }
+
+    .hero-buttons {
+        flex-direction: column;
+        gap: 0; /* Buttons already have margin-bottom now */
+    }
+
+    .info-cards, .service-grid, .team-grid, .contact-grid {
+        grid-template-columns: 1fr; /* Stack on smaller screens */
+    }
+}
+
+/* --- Email Modal Styles --- */
+.modal {
+    display: none; /* Hidden by default */
+    position: fixed; /* Stay in place */
+    z-index: 1000; /* Sit on top */
+    left: 0;
+    top: 0;
+    width: 100%; /* Full width */
+    height: 100%; /* Full height */
+    overflow: auto; /* Enable scroll if needed */
+    background-color: rgba(0,0,0,0.7); /* Black w/ opacity */
+    display: flex; /* Use flexbox for centering */
+    align-items: center; /* Center vertically */
+    justify-content: center; /* Center horizontally */
+}
+
+.modal-content {
+    background-color: #2a2a2a; /* Dark background */
+    margin: auto;
+    padding: 30px;
+    border: 1px solid #444;
+    width: 90%; /* Adjust width as needed */
+    max-width: 500px; /* Max width for larger screens */
+    border-radius: 8px;
+    box-shadow: 0 5px 15px rgba(0,0,0,0.5);
+    position: relative;
+    color: #eee; /* Light text */
+    text-align: center;
+}
+
+.modal-content h3 {
+    color: #4CAF50; /* Primary green */
+    margin-bottom: 20px;
+    font-size: 1.8em;
+}
+
+.modal-content p {
+    margin-bottom: 15px;
+    font-size: 0.95em;
+    color: #bbb;
+}
+
+.close-button {
+    color: #aaa;
+    float: right;
+    font-size: 30px;
+    font-weight: bold;
+    position: absolute;
+    top: 10px;
+    right: 20px;
+    cursor: pointer;
+}
+
+.close-button:hover,
+.close-button:focus {
+    color: #fff;
+    text-decoration: none;
+    cursor: pointer;
+}
+
+.modal-options {
+    display: flex;
+    flex-direction: column;
+    gap: 10px; /* Space between buttons */
+    margin-top: 20px;
+}
+
+.modal-btn {
+    background-color: #4CAF50; /* Primary green */
+    color: white;
+    padding: 12px 20px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 1.1em;
+    transition: background-color 0.3s ease;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+}
+
+.modal-btn:hover {
+    background-color: #45a049;
+}
+
+.webmail-btn {
+    background-color: #007bff; /* A blue for webmail */
+}
+
+.webmail-btn:hover {
+    background-color: #0056b3;
+}
+
+.webmail-icon {
+    height: 1.2em; /* Adjust icon size */
+    width: auto;
+    margin-right: 5px;
+}
+
+.copy-email-btn {
+    background-color: #6c757d; /* Gray for copy */
+}
+
+.copy-email-btn:hover {
+    background-color: #5a6268;
+}
+
+.modal-options hr {
+    border: none;
+    border-top: 1px solid #444;
+    margin: 20px 0;
+}
+/* --- Network Support Page Styling (Corrected Variables) --- */
+
+.login-detail-card {
+    background-color: var(--color-dark-secondary);
+    border-radius: 8px;
+    padding: 25px;
+    margin-bottom: 25px; /* Spacing between cards */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); /* Subtle shadow for depth */
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.login-detail-card:hover {
+    transform: translateY(-5px); /* Slight lift on hover */
+    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.3);
+}
+
+.login-detail-card h4 {
+    color: var(--color-arc-reactor-blue);
+    margin-top: 0;
+    margin-bottom: 20px;
+    font-size: 1.6em;
+    border-bottom: 2px solid var(--color-repulsor-orange); /* Green border */
+    padding-bottom: 10px;
+}
+
+.login-detail-card p {
+    font-size: 1.1em;
+    line-height: 1.6;
+    margin-bottom: 10px; /* Space between paragraphs */
+    color: var(--color-text-light);
+}
+
+.login-detail-card p strong {
+    color: var(--color-repulsor-orange); /* Green strong text */
+    font-weight: 700; /* Ensure strong is bold */
+    min-width: 120px; /* Give labels a minimum width for alignment if needed */
+    display: inline-block; /* Helps with alignment for short labels */
+}
+
+.login-detail-card p i {
+    color: var(--color-arc-reactor-blue);
+    margin-right: 10px;
+    font-size: 1.2em; /* Slightly larger icons */
+}
+
+/* --- About Us Page Specific Styles --- */
+
+.text-center {
+    text-align: center;
+}
+
+.about-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: calc(var(--spacing-unit) * 2);
+    margin-top: calc(var(--spacing-unit) * 2);
+    text-align: center; /* Center content within grid items */
+}
+
+.about-card {
+    background-color: var(--color-dark-secondary);
+    border: 1px solid var(--color-metallic-accent);
+    border-radius: var(--border-radius-sharp);
+    padding: calc(var(--spacing-unit) * 1.5);
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    display: flex;
+    flex-direction: column; /* Stack content vertically */
+    align-items: center; /* Center items horizontally within the card */
+}
+
+.about-card:hover {
+    transform: translateY(-5px);
+    /* Use the blue accent color for hover effect, consistent with other cards */
+    box-shadow: 0 5px 20px rgba(0, 230, 255, 0.2);
+}
+
+.about-card i {
+    font-size: 3rem;
+    color: var(--color-arc-reactor-blue); /* Consistent blue for icons */
+    margin-bottom: var(--spacing-unit);
+    filter: drop-shadow(0 0 5px rgba(0, 230, 255, 0.5)); /* Blue glow for icons */
+}
+
+.about-card h4 {
+    color: var(--color-repulsor-orange); /* Green for headings */
+    margin-bottom: 0.75rem;
+    font-size: 1.5rem;
+}
+
+.about-card p {
+    color: var(--color-text-muted);
+    font-size: 0.95rem;
+    margin-bottom: var(--spacing-unit);
+    flex-grow: 1; /* Allows text to push lists/buttons down */
+}
+
+.about-card ul {
+    list-style: none; /* Remove default bullet points */
+    padding: 0;
+    margin-top: var(--spacing-unit);
+    text-align: left; /* Align list items left */
+    width: 100%; /* Take full width of card */
+}
+
+.about-card ul li {
+    background-color: rgba(74, 74, 74, 0.2); /* Slightly lighter background for list items */
+    padding: 0.5rem 1rem;
+    margin-bottom: 0.5rem;
+    border-radius: var(--border-radius-sharp);
+    font-size: 0.9rem;
+    color: var(--color-text-light);
+    border-left: 3px solid var(--color-repulsor-orange); /* Green accent bar */
+}
+
+.about-card ul li strong {
+    color: var(--color-arc-reactor-blue); /* Blue for strong text in list */
+}
+
+.features-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: calc(var(--spacing-unit) * 1.5);
+    margin-top: calc(var(--spacing-unit) * 2);
+}
+
+.feature-item {
+    background-color: var(--color-dark-secondary);
+    border: 1px solid var(--color-metallic-accent);
+    border-radius: var(--border-radius-sharp);
+    padding: calc(var(--spacing-unit) * 1.5);
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
+    text-align: center;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.feature-item:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 5px 20px rgba(76, 175, 80, 0.2); /* Green glow on hover */
+}
+
+.feature-item i {
+    font-size: 2.5rem;
+    color: var(--color-repulsor-orange); /* Green for icons */
+    margin-bottom: var(--spacing-unit);
+    filter: drop-shadow(0 0 5px rgba(76, 175, 80, 0.5)); /* Green glow for icons */
+}
+
+.feature-item h4 {
+    color: var(--color-arc-reactor-blue); /* Blue for headings */
+    margin-bottom: 0.5rem;
+    font-size: 1.3rem;
+}
+
+.feature-item p {
+    color: var(--color-text-muted);
+    font-size: 0.9rem;
+}
+
+/* Ensure the heading of the first section stays centered and green */
+#our-story h3 {
+    color: var(--color-repulsor-orange);
+    text-align: center;
+    margin-bottom: calc(var(--spacing-unit) * 2);
+}
+
+/* Specific styling for the intro paragraph in Our Story */
+#our-story .text-center {
+    max-width: 800px;
+    margin-left: auto;
+    margin-right: auto;
+    font-size: 1.1rem;
+    line-height: 1.8;
+    color: var(--color-text-light); /* Make it more prominent */
+}
+
+/* Updated styles for .values-list-container and .value-item */
+.values-list-container {
+    width: 100%;
+    margin-top: var(--spacing-unit);
+    display: flex;
+    flex-direction: column; /* Stacks them vertically */
+    gap: 10px; /* Space between each value item */
+}
+
+.value-item {
+    background-color: rgba(74, 74, 74, 0.2); /* Slightly lighter background for the item */
+    padding: 0.8rem 1.2rem;
+    border-radius: var(--border-radius-sharp);
+    border-left: 3px solid var(--color-repulsor-orange); /* Green accent bar on the left */
+    text-align: left; /* Align text within the item */
+}
+
+.value-item p {
+    margin-bottom: 0; /* Remove default paragraph margin */
+    font-size: 0.95rem;
+    color: var(--color-text-light);
+}
+
+.value-item p strong {
+    color: var(--color-arc-reactor-blue); /* Blue for the strong value name */
+}
